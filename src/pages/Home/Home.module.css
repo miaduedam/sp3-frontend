@@ -1,0 +1,14 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+h1 {
+  color: #333;
+  font-size: 3rem;
+}
+
+p {
+  color: #555;
+  font-size: 2rem;
+  line-height: 1.5;
+}

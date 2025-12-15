@@ -5,15 +5,17 @@ const Header = ({ headers }) => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        {headers.map((h, index) => (
+        {headers.map((header, index) => (
           <NavLink
             key={index}
-            to={h.url}
+            to={header.url}
             className={({ isActive }) =>
               isActive ? styles.activeLink : styles.link
             }
+
           >
-            {h.title}
+            {header.title}
+            
           </NavLink>
         ))}
       </nav>
