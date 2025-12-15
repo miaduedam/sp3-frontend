@@ -1,0 +1,54 @@
+.header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f8f8f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes nav left, login right /
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.activeLink {
+  color: #000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/ Temporary login placeholder */
+.loginPlaceholder {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
