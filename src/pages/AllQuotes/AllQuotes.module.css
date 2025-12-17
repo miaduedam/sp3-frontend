@@ -39,7 +39,7 @@
 
 /* Hover = lille pop */
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-10px);
 }
 
 /* Quote tekst */

@@ -3,13 +3,30 @@ import styles from "./AllQuotes.module.css";
 
 export default function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // Fetch quotes from an API
     fetch("http://localhost:7070/api/quotes")
-      .then((response) => response.json())
-      .then((data) => setQuotes(data))
-      .catch((error) => console.error("Error fetching quotes:", error));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load quotes. Please try again later!");
+        }
+        return response.json();
+      })
+
+      .then((data) => {
+        console.log("Data from api: ", data);
+        setQuotes(data);
+        setLoading(false);
+      })
+
+      .catch((err) => {
+        console.error(err);
+        setError("Could not load quotes");
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -19,14 +36,20 @@ export default function AllQuotes() {
 
         <p className={styles.subtitle}>Browse all quotes in the system</p>
         <div className={styles.divider}></div>
-        <div className={styles.grid}>
-          {quotes.map((quote) => (
-            <div key={quote.id} className={styles.card}>
-              <p className={styles.quote}>“{quote.quote}”</p>
-              <p className={styles.author}>{quote.author}</p>
-            </div>
-          ))}
-        </div>
+        {loading && <p>Loading quotes...</p>}
+        {error && <p>{error}</p>}
+
+        {!loading && !error && (
+          <div className={styles.grid}>
+            {quotes.map((quote) => (
+              <div key={quote.id} className={styles.card}>
+                <p className={styles.quote}>“{quote.quote}”</p>
+                <div className={styles.divider}></div>
+                <p className={styles.author}>{quote.author}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
