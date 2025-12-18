@@ -7,7 +7,7 @@ function App() {
     { title: "Home", url: "/" },
     { title: "Who Said it", url: "/WhoSaidIt" },
     { title: "All Quotes", url: "/AllQuotes" },
-    { title: "My Score", url: "/MyScore" },
+    { title: "My Profile", url: "/MyProfile" },
     { title: "API Documentation", url: "/APIDocumentation" }
   ];
 

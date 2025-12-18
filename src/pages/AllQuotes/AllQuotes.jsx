@@ -8,7 +8,7 @@ export default function AllQuotes() {
 
   useEffect(() => {
     // Fetch quotes from an API
-    fetch("http://localhost:7070/api/quotes")
+    fetch("https://whosaidit.pigeonnest.dk/api/quotes")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Could not load quotes. Please try again later!");
