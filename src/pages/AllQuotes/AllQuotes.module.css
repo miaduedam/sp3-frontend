@@ -37,12 +37,12 @@
   transition: transform 0.15s ease;
 }
 
-/* Hover = lille pop */
+/* Hover = little pop */
 .card:hover {
   transform: translateY(-10px);
 }
 
-/* Quote tekst */
+/* Quote text */
 .quote {
   margin-bottom: 1rem;
   line-height: 1.5;
