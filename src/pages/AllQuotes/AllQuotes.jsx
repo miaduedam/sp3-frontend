@@ -7,17 +7,20 @@ export default function AllQuotes() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    //check if loggedin
-    if(!facade.loggedIn()) return 
-    // Fetch quotes from an API
-    facade.fetchData("quotes")
+    //Only fetch if the user is logged in
+    if (!facade.loggedIn()) return;
+    //Fetch all qoutes from backend
+    facade
+      .fetchData("quotes")
       .then((data) => {
         console.log("Data from api: ", data);
+        //Save the received quotes in state
         setQuotes(data);
         setLoading(false);
       })
 
       .catch((err) => {
+        //Handle errors from the request
         console.error(err);
         setError("Could not load quotes");
         setLoading(false);
