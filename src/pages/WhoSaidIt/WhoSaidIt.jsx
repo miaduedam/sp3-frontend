@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./WhoSaidIt.module.css";
+import facade from "../../apiFacade";
 
 export default function QuoteGame() {
   const [quotes, setQuotes] = useState([]);
@@ -10,17 +11,26 @@ export default function QuoteGame() {
   const [lives, setLives] = useState(3);
   const [highScores, setHighScores] = useState([]);
 
-  useEffect(() => {
-    fetch("https://whosaidit.pigeonnest.dk/api/quotes")
-      .then((res) => res.json())
-      .then((data) => {
-        setQuotes(data);
-        setLoading(false);
-        nextRound(data);
-        });
-    }, []);
 
-  function nextRound(allQuotes = quotes) {
+useEffect(() => {
+  if (!facade.loggedIn()) return;
+
+  facade
+    .fetchData("quotes")
+    .then((data) => {
+      setQuotes(data);
+      setLoading(false);
+      nextRound(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      setLoading(false);
+    });
+}, []);
+
+
+
+    function nextRound(allQuotes = quotes) {
     if (!allQuotes.length) return;
 
     const quote = allQuotes[Math.floor(Math.random() * allQuotes.length)];
