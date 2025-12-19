@@ -26,8 +26,8 @@ function App() {
     { title: "Home", url: "/" },
     { title: "Who Said it", url: "/WhoSaidIt" },
     { title: "All Quotes", url: "/AllQuotes" },
-    { title: "My Score", url: "/MyScore" },
-    { title: "API Documentation", url: "/APIDocumentation" },
+    { title: "My Profile", url: "/MyProfile" },
+    { title: "API Documentation", url: "/APIDocumentation" }
   ];
 
   return (

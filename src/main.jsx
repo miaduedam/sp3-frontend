@@ -6,7 +6,8 @@ import App from "./App";
 import Home from "./pages/Home/Home.jsx";
 import WhoSaidIt from "./pages/WhoSaidIt/WhoSaidIt.jsx";
 import AllQuotes from "./pages/AllQuotes/AllQuotes.jsx";
-import MyScore from "./pages/MyScore/MyScore.jsx";
+import MyProfile from './pages/MyProfile/MyProfile.jsx';
+
 import APIDocumentation from "./pages/APIDocumentation/APIDocumentation.jsx";
 
 
@@ -20,7 +21,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="WhoSaidIt" element={<WhoSaidIt />} />
           <Route path="AllQuotes" element={<AllQuotes />} />
-          <Route path="MyScore" element={<MyScore />} />
+          <Route path="MyProfile" element={<MyProfile />} />
           <Route path="APIDocumentation" element={<APIDocumentation />} />
         </Route>
       </Routes>
