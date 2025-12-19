@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import styles from "./AllQuotes.module.css";
-
+import facade from "../../apiFacade";
 export default function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    //check if loggedin
+    if(!facade.loggedIn()) return 
     // Fetch quotes from an API
-    fetch("http://localhost:7070/api/quotes")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not load quotes. Please try again later!");
-        }
-        return response.json();
-      })
-
+    facade.fetchData("quotes")
       .then((data) => {
         console.log("Data from api: ", data);
         setQuotes(data);
