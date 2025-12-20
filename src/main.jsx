@@ -6,10 +6,9 @@ import App from "./App";
 import Home from "./pages/Home/Home.jsx";
 import WhoSaidIt from "./pages/WhoSaidIt/WhoSaidIt.jsx";
 import AllQuotes from "./pages/AllQuotes/AllQuotes.jsx";
-import MyProfile from './pages/MyProfile/MyProfile.jsx';
-
+import MyProfile from "./pages/MyProfile/MyProfile.jsx";
+import ProtectedRoute from "./components/security/ProtectedRoute.jsx";
 import APIDocumentation from "./pages/APIDocumentation/APIDocumentation.jsx";
-
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,12 +16,14 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         {/* Layout route */}
         <Route path="/" element={<App />}>
-          {/* Child routes rendered inside <Outlet /> */}
           <Route index element={<Home />} />
-          <Route path="WhoSaidIt" element={<WhoSaidIt />} />
-          <Route path="AllQuotes" element={<AllQuotes />} />
-          <Route path="MyProfile" element={<MyProfile />} />
-          <Route path="APIDocumentation" element={<APIDocumentation />} />
+          {/*Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="WhoSaidIt" element={<WhoSaidIt />} />
+            <Route path="AllQuotes" element={<AllQuotes />} />
+            <Route path="MyProfile" element={<MyProfile />} />
+            <Route path="APIDocumentation" element={<APIDocumentation />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
