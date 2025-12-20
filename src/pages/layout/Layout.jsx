@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header/Header.jsx";
+import ErrorBoundary from "../../components/errors/ErrorBoundary.jsx";
 
 export default function Layout({
   headers,
@@ -19,7 +20,9 @@ export default function Layout({
         username={username}
         roles={roles}
       />
+      <ErrorBoundary>
       <Outlet />
+      </ErrorBoundary>
     </>
   );
 }
