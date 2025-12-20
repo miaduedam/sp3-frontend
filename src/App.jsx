@@ -1,8 +1,7 @@
-import Header from "./components/header/Header.jsx";
-import { Outlet } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
 import facade from "./apiFacade.js";
+import Layout from "./pages/layout/Layout.jsx";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -22,24 +21,30 @@ function App() {
     setLoggedIn(false);
     facade.logout();
   };
-  const headers = [
-    { title: "Home", url: "/" },
+
+  const publicHeaders = [{ title: "Home", url: "/" }];
+
+  const protectedHeaders = [
     { title: "Who Said it", url: "/WhoSaidIt" },
     { title: "All Quotes", url: "/AllQuotes" },
     { title: "My Profile", url: "/MyProfile" },
-    { title: "API Documentation", url: "/APIDocumentation" }
+    { title: "API Documentation", url: "/APIDocumentation" },
   ];
 
+  //Show protected navigation links only when user is logged in
+  const headersToShow = loggedIn
+    ? [...publicHeaders, ...protectedHeaders]
+    : publicHeaders;
+
   return (
-    <>
-      <Header
-        headers={headers}
-        loggedIn={loggedIn}
-        login={login}
-        logout={logout}
-      />
-      <Outlet />
-    </>
+    <Layout
+      headers={headersToShow}
+      loggedIn={loggedIn}
+      login={login}
+      logout={logout}
+      username={username}
+      roles={roles}
+    />
   );
 }
 
