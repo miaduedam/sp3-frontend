@@ -12,8 +12,6 @@ export default function QuoteGame() {
   const [highScores, setHighScores] = useState([]);
 
   useEffect(() => {
-    if (!facade.loggedIn()) return;
-
     facade
       .fetchData("quotes")
       .then((data) => {
