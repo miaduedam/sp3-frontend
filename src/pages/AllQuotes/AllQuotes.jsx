@@ -23,9 +23,11 @@ export default function AllQuotes() {
       })
 
       .catch((err) => {
-        //Handle errors from the request
-        console.error("Fetct quotes failed: ", err);
-        setError("Could not load quotes");
+        if(err.status === 401 || err.status === 403){
+          setError("Du skal være logget ind for at se quotes.")
+        } else {
+          setError("Citaterne kunne ikke indlæses. Prøv igen senere.")
+        }
         setQuotes([]);
         setLoading(false);
       });
