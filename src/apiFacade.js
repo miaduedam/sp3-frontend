@@ -39,7 +39,7 @@ const login = (user, password) => {
 
 const fetchData = (endpoint, method) => {
   const optionObject = makeOptions(method, true);
-  return fetch(BASE_URL + endpoint, optionObject).then((res) => res.json());
+  return fetch(BASE_URL + endpoint, optionObject).then(handleHttpErrors);
 };
 
 const makeOptions = (method, addToken, body) => {
